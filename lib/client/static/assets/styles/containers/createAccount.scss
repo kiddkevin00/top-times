@@ -1,0 +1,6 @@
+@import '../_modules/extensions';
+@import '../_modules/variables';
+
+#create-account {
+  @extend %create-update-account;
+}

@@ -1,0 +1,12 @@
+@import '../_modules/extensions';
+@import '../_modules/variables';
+
+.account-info {
+  @extend %create-update-account;
+
+  .cancel-changes-button {
+    background-color: transparent;
+    border: 1px $tint-color solid;
+    color: $tint-color;
+  }
+}

@@ -1,0 +1,46 @@
+.get-started-footer {
+  display: flex;
+  flex-direction: column;
+  height: 857px;
+  background-image: url('/images/bg.png');
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-position: center bottom;
+  background-color: #F0F0F0;
+  background-size: 100% auto;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    padding-top: 100px;
+    max-width: 100%; // in order to contain h2's max-width
+
+    .get-started-h2 {
+      color: #242526;
+      margin-bottom: 38px;
+      padding: 0 20px;
+      width: 484px;
+      max-width: 100%;
+    }
+
+    .get-started-btn {
+      width: 281px;
+    }
+  }
+
+  /* for Smartphones (portrait and landscape) */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 540px;
+    background-size: auto 60%;
+
+    > div {
+      padding-top: 59px;
+
+      .get-started-h2 {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

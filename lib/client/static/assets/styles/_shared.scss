@@ -1,0 +1,74 @@
+@import './_modules/fonts';
+@import './_modules/normalize';
+
+* {
+  font-family: 'SF Text';
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #444950;
+  font-size: 14px;
+}
+
+html,
+body,
+#top-times-react-root,
+#top-times-react-root > div {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'SF Text';
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+p {
+  font-size: 13px;
+  line-height: 17px;
+  color: #606770;
+  text-align: center;
+}
+
+a,
+.link {
+  text-decoration: none;
+  color: #1877F2;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+input:disabled {
+  background-color: rgba(204, 208, 213, 0.3);
+}
+
+.custom-dropdown-date {
+  display: flex;
+
+  .custom-dropdown-date-select {
+    background-color: white;
+    margin: 4px 2px 0;
+    border: 1px #CCD0D5 solid;
+    height: 39px;
+    font-size: 13px;
+  }
+}
+
+.role-select {
+  margin-top: 4px;
+  color: #1c1e21;
+}

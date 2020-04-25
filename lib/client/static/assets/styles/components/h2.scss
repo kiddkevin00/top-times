@@ -1,0 +1,18 @@
+.pn-h2 {
+  margin-bottom: 20px;
+  width: 532px;
+  max-width: 100%;
+  text-align: center;
+  font-size: 32px;
+  line-height: 46px;
+  font-weight: 600;
+
+  /* for Smartphones (portrait and landscape) */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    margin-bottom: 12px;
+    width: 299px;
+    font-size: 24px;
+    line-height: 32px;
+    //font-weight: 500;
+  }
+}

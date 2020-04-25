@@ -1,0 +1,12 @@
+$fa-font-path: '~font-awesome/fonts';
+
+@import '~font-awesome/scss/font-awesome';
+
+//@import '~antd/lib/style/index'; /// Try to avoid import this to reduce the file size.
+@import '~antd/lib/modal/style/index';
+@import '~antd/lib/select/style/index';
+@import '~antd/lib/list/style/index';
+@import '~antd/lib/skeleton/style/index';
+@import '~antd/lib/avatar/style/index';
+@import '~antd/lib/icon/style/index';
+@import '~bootstrap/dist/css/bootstrap.min.css';

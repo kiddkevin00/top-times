@@ -1,0 +1,311 @@
+@import '../_modules/variables';
+
+%create-update-account {
+  display: flex;
+  flex-direction: column;
+
+  main {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 170px 0 80px;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 824px;
+
+    /* for Smartphones (portrait and landscape) */
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+      margin-top: $page-header-height + 20px;
+    }
+
+    h4 {
+      text-align: center;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: 0.5px solid #D8D8D8;
+    }
+
+    form {
+      margin-top: 32px;
+      width: 100%;
+
+      // TODO: Abstract...
+      .inputs {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .input-container {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 21px;
+          width: 366px;
+
+          // become one input per row
+          @media only screen and (max-width: 771px) {
+            width: 100%;
+          }
+
+          label {
+            font-size: 13px;
+            color: #1C1E21;
+          }
+
+          input {
+            margin-top: 4px;
+            border: 1px #CCD0D5 solid;
+            border-radius: 4px;
+            padding: 0 12px;
+            width: 366px;
+            height: 39px;
+            font-size: 13px;
+            color: #1C1E21;
+
+            // become one input per row
+            @media only screen and (max-width: 771px) {
+              width: 100%;
+            }
+
+            &::placeholder {
+              color: #8D949E;
+            }
+          }
+
+          .password-visibility-toggle {
+            top: unset;
+            bottom: 10px;
+          }
+        }
+      }
+
+      .inputs-agreement-top-separator {
+        margin-top: 11px;
+      }
+
+      .inputs-agreement-bottom-separator {
+        margin-top: 4px;
+      }
+
+      .form-row {
+        display: flex;
+        flex-flow: row wrap-reverse;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 46px;
+
+        p {
+          opacity: 0.84;
+        }
+
+        // become one element per row
+        @media only screen and (max-width: 657px) {
+          p {
+            margin: auto;
+          }
+
+          button {
+            margin: 0 auto 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+%login-forgot-password {
+  display: flex;
+  justify-content: center;
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 170px 0 40px;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 406px;
+
+    img {
+      margin-bottom: 20px;
+      height: 76px;
+    }
+
+    form {
+      margin-top: 37px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin-bottom: 16px;
+        border: 1px #CCD0D5 solid;
+        border-radius: 4px;
+        padding: 0 12px;
+        width: 100%;
+        height: 41px;
+        font-size: 13px;
+        color: #1C1E21;
+        flex-wrap: wrap-reverse;
+      }
+
+      .submit-button {
+        margin: 8px 0 32px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  /* for Smartphones (portrait and landscape) */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    main {
+      margin-top: $page-header-height + 20px;
+
+      form {
+        width: 100%;
+
+        .submit-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin time-user-management($controlPaneMoveUpWidth) {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+
+  main {
+    margin-top: $page-header-height;
+    background-color: #F9F7F5;
+    flex-grow: 1;
+    display: flex;
+
+    .white-board {
+      flex-grow: 1;
+      margin: 58px 73px;
+      background-color: white;
+
+      /* when control pane moves to top */
+      @media only screen and (max-width: $controlPaneMoveUpWidth) {
+        margin: 16px 16px 24px;
+      }
+
+      .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #EBEDF0;
+        padding: 0 24px;
+        height: 80px;
+        font-size: 20px;
+        font-weight: normal;
+        color: #212B36;
+
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+          padding: 0 12px;
+        }
+
+        h4 {
+          margin: 0;
+        }
+
+        button {
+          width: 100px;
+          height: 33px;
+        }
+      }
+
+      .panes {
+        display: flex;
+        flex-direction: row;
+
+        /* when control pane moves to top */
+        @media only screen and (max-width: $controlPaneMoveUpWidth) {
+          flex-direction: column;
+        }
+
+        .pane {
+          flex-grow: 7;
+
+          /* when control pane moves to top */
+          @media only screen and (max-width: $controlPaneMoveUpWidth) {
+            padding: 0 24px;
+          }
+
+          /* Smartphones (portrait and landscape) ----------- */
+          @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            padding: 0 8px;
+          }
+
+          &.control {
+            flex-grow: 2;
+            padding: 32px;
+
+            /* when control pane moves to top */
+            @media only screen and (max-width: $controlPaneMoveUpWidth) {
+              border-bottom: 1px solid #EBEDF0;
+            }
+
+            /* Smartphones (portrait and landscape) ----------- */
+            @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+              padding: 0 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sort-by-select,
+  .search-input {
+    display: block;
+    margin-bottom: 16px;
+    width: 250px;
+    max-width: 250px;
+    height: 32px;
+
+    /* when control pane moves to top */
+    @media only screen and (max-width: 1043px) {
+      width: 100%;
+    }
+  }
+
+  .search-input {
+    border: 1px solid #ccd0d5;
+    border-radius: 4px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: #1c1e21;
+  }
+
+  .time-zone-or-user-list {
+    max-width: 95%;
+
+    @media only screen and (max-width: $controlPaneMoveUpWidth) {
+      max-width: 100%;
+    }
+
+    .extra-info {
+      flex: 0.5 0 0;
+
+      @media only screen and (max-width: $controlPaneMoveUpWidth) {
+        margin-left: 10px;
+      }
+
+      /* Smartphones (portrait and landscape) ----------- */
+      @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        flex: unset;
+      }
+    }
+  }
+}

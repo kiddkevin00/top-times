@@ -1,0 +1,110 @@
+#pn-page-footer { // for overriding the styles defined inside a page
+  background-color: #212B36;
+  color: white;
+  padding: 75px 120px 40px;
+
+  /* when becoming vertical mode */
+  @media only screen and (max-width: 1070px) {
+    padding: 48px 32px 32px;
+  }
+
+  h6 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    padding: 0;
+    text-align: left;
+    color: white;
+  }
+
+  .site-map-with-get-updates {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    /* when becoming vertical mode */
+    @media only screen and (max-width: 1070px) {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+
+    .site-map {
+      flex-grow: 10;
+      display: flex;
+      justify-content: space-between;
+
+      /* when becoming vertical mode */
+      @media only screen and (max-width: 1070px) {
+        flex-direction: column;
+
+        > section {
+          margin-bottom: 48px;
+        }
+      }
+    }
+
+    .get-updates {
+      flex-grow: 9;
+      display: flex;
+      flex-direction: column;
+      //justify-content: space-between;
+      align-items: flex-end;
+
+      /* when becoming vertical mode */
+      @media only screen and (max-width: 1070px) {
+        align-items: flex-start;
+      }
+
+      > form {
+        max-width: 100%;
+        width: 312px;
+        height: 36px;
+
+        input {
+          outline: none;
+          border-width: 0;
+          border-radius: 4px 0 0 4px;
+          padding: 9px 12px;
+          width: 65%;
+          height: 100%;
+          color: #444950;
+
+          &::placeholder {
+            color: #BEC3C9;
+          }
+        }
+
+        button {
+          outline: none;
+          border-radius: 0 4px 4px 0;
+          width: 35%;
+          height: 100%;
+          color: #EC7EBD;
+          background-color: white;
+          font-weight: 500;
+        }
+      }
+
+      .social-media-icon {
+        margin: 40px 0 0 20px;
+        width: 18px;
+        height: 18px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .disclaimers {
+    border-top: 1px solid #34404D;
+    padding-top: 40px;
+
+    p {
+      color: #606770;
+      font-size: 12px;
+    }
+  }
+}

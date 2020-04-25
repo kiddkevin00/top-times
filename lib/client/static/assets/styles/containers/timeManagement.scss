@@ -1,0 +1,12 @@
+@import '../_modules/variables';
+@import '../_modules/extensions';
+
+.time-management {
+  @include time-user-management($controlPaneMoveUpWidth: 1100px);
+
+  .flag-icon {
+    width: 32px !important;
+    height: 32px !important;
+    box-shadow: 0 0 5px -3px;
+  }
+}

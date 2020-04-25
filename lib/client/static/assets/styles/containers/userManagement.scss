@@ -1,0 +1,15 @@
+@import '../_modules/variables';
+@import '../_modules/extensions';
+
+.user-management {
+  @include time-user-management($controlPaneMoveUpWidth: 1350px);
+
+  .user-add {
+    margin-right: 8px;
+  }
+
+  .role-icon {
+    background-color: $tint-color;
+    opacity: 0.5;
+  }
+}

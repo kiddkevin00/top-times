@@ -11,7 +11,7 @@ To house a react/redux application for end user experience.
 ## Getting started
 1. `npm install`
 2. `npm start`
-3. Navigate to the browser where webpack development server is running at [http://localhost:9999](http://localhost:9999)
+3. Navigate to the browser where webpack development server is running at [http://localhost:8088](http://localhost:8088)
 
 ## Contributing
 ### Pull Requests (Step-by-Step Process)

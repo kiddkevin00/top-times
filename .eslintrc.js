@@ -36,7 +36,7 @@ module.exports = {
     'import/order': [2, { groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin'] }],
     'import/no-extraneous-dependencies': [2, { devDependencies: true, optionalDependencies: false, peerDependencies: false }],
     'newline-after-var': [2, 'always'],
-    'no-multi-assign': 2,
+    'no-multi-assign': 1,
     'react/forbid-prop-types': 2,
     'react/jsx-no-bind': 1,
     'react/destructuring-assignment': [1, 'always', { ignoreClassFields: true }],

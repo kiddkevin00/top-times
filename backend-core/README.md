@@ -1,16 +1,16 @@
 # TopTimes Backend Core
 
-A RESTful JSON API backend with MongoDB and Postgres database.
+A RESTful JSON API backend server with MongoDB or/and Postgres persistence layer.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine.
+The following instructions will get you a copy of the application up and running on your local machine.
 
 ### Prerequisites
 
-- Node.js (v8.9.4)
-- npm (>= v5.6.0)
-- Database: MongoDB, Postgres
+- Node.js (v10.16.0)
+- npm (>= v6.9.0)
+- Database: MongoDB or/and Postgres
 	- [Suggested MongoDB installation](https://docs.mongodb.com/manual/installation/)
 	- [Suggested Postgres installation](https://postgresapp.com/)
 
@@ -21,14 +21,14 @@ $ # Install Mongo or/and Postgres by the suggested links above...
 $ npm install
 ```
 
-### Testing Databases CRUD operations
+### Testing Databases CRUD Operations
 
 #### MongoDB Driver
 
 ```
 $ # Start MongoDB daemon...
 $ ./examples/database/mongo.sample.js
-$ # It should print out the result of each CRUD operations...
+$ # It should print out the result of each CRUD operations properly...
 ```
 
 #### Postgres Driver
@@ -36,29 +36,14 @@ $ # It should print out the result of each CRUD operations...
 ```
 $ # Start Postgres server...
 $ ./examples/database/postgres.sample.js
-$ # It should print out the result of each CRUD operations...
+$ # It should print out the result of each CRUD operations properly...
 ```
 
 ### Running Server Locally
 
 ```
 $ # Start MongoDB daemon or/and Postgres server...
-$ npm start
-```
-
-***[Note] It runs with MongoDB driver by default. Switching to Posgres driver requires only the following one change to any of database strategy object of your choice:***
-
-```
-{
-  storeType: constants.STORE.TYPES.MONGO_DB, // CHANGE THIS TO `constants.STORE.TYPES.POSTGRES`
-  operation: {
-    type: constants.STORE.OPERATIONS.SELECT,
-    data: [
-      { address: state.address }
-    ]
-  },
-  tableName: constants.STORE.TABLE_NAMES.ADDRESS_INFO
-}
+$ npm run dev:start
 ```
 
 ## Testing and Contributing
@@ -80,8 +65,8 @@ $ npm run unit-test
 
 * [Express.js](http://expressjs.com/)
 * [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
-* [Sequelize](http://docs.sequelizejs.com/en/latest/)
 * [Mongojs](https://github.com/mafintosh/mongojs)
+* [Sequelize](http://docs.sequelizejs.com/en/latest/)
 
 ***[Note] All required packages and versions are listed in `package.json`***
 

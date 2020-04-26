@@ -9,7 +9,7 @@
     "lint": "npm run lint:scss && npm run lint:js",
     "test": "npm run jest -- --coverage --no-cache",
     "prepare": "rm -rf build/ && NODE_ENV=production webpack -p",
-    "_prepush": "./bin/no-push-master.sh && npm run lint && npm run test",
+    "prepush": "./bin/no-push-master.sh && npm run lint && npm run test",
     "-------------- INTERNAL -------------": "",
     "lint:js": "eslint --format 'node_modules/eslint-formatter-friendly' --ext .js,.jsx lib/client/app/ lib/server/ spec/",
     "lint:scss": "stylelint 'lib/client/static/assets/styles/**/*.scss'",

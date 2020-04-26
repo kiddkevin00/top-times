@@ -1,7 +1,7 @@
 exports.ERROR_MSG = {
   JWT_INVALID: 'The provided JWT is invalid.',
-  EMAIL_ALREADY_SIGNUP: 'The provided email is already signed up.',
-  LOGIN_INFO_INCORRECT: 'The provided login information is incorrect.',
+  EMAIL_ALREADY_SIGNUP: 'This email address has already been taken.',
+  LOGIN_INFO_INCORRECT: 'Incorrect login information.',
   USER_NOT_FOUND: 'The provided user is no longer exited in database.',
   TIMEZONE_NOT_FOUND: 'The provided timezone is no longer exited in database.',
   PERMISSION_DENIED: 'You are not authorized to perform this operation.',

@@ -1,6 +1,6 @@
 @import '../_modules/extensions';
 @import '../_modules/variables';
 
-.account-info {
+#add-or-edit-time-zone {
   @extend %create-update-account-timezone;
 }

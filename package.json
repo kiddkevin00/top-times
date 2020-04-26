@@ -99,6 +99,7 @@
     "webpack": "4.31.0",
     "webpack-cli": "3.3.2",
     "webpack-dev-server": "3.3.1",
+    "moment-timezone": "0.5.28",
     "react-country-flag": "2.0.1"
   },
   "dependencies": {

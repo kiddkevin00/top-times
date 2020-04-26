@@ -2,5 +2,5 @@
 @import '../_modules/variables';
 
 #create-account {
-  @extend %create-update-account;
+  @extend %create-update-account-timezone;
 }

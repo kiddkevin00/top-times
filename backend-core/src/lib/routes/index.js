@@ -4,6 +4,7 @@
 
 const authRoutes = require('./auth/');
 const usersRoutes = require('./users/');
+const timeZonesRoutes = require('./timeZones/');
 const errorHandlerMiddleware = require('../middlewares/error-handler');
 const constants = require('../constants/');
 const packageJson = require('../../../package.json');
@@ -65,6 +66,7 @@ function setupApiRoutes() {
 
   router.use('/auth', authRoutes);
   router.use('/users', usersRoutes);
+  router.use('/timezones', timeZonesRoutes);
 
   return router;
 }

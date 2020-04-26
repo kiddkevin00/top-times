@@ -18,4 +18,5 @@ exports.OPERATIONS = {
 
 exports.TABLE_NAMES = {
   USER: 'user',
+  TIME_ZONE: 'timeZone',
 };

@@ -15,7 +15,7 @@ const getUserProfile = async (req, res) => {
       .send(constants.AUTH.ERROR_MSG.PERMISSION_DENIED);
   }
 
-  const getUserInfoStrategy = {
+  const getUserProfileStrategy = {
     storeType: constants.STORE.TYPES.MONGO_DB,
     operation: {
       type: constants.STORE.OPERATIONS.SELECT,
@@ -25,15 +25,14 @@ const getUserProfile = async (req, res) => {
   };
 
   if (userId) {
-    getUserInfoStrategy.operation.data = [{ _id: mongojs.ObjectId(userId) }];
+    getUserProfileStrategy.operation.data = [{ _id: mongojs.ObjectId(userId), isSuspended: false }];
   }
 
-  const results = await DatabaseService.execute(getUserInfoStrategy);
+  const results = await DatabaseService.execute(getUserProfileStrategy);
 
   if (userId && results.length !== 1) {
     return res.status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND).send(constants.AUTH.ERROR_MSG.USER_NOT_FOUND);
   }
-
   return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json(results);
 };
 
@@ -74,7 +73,7 @@ const updateUserProfile = async (req, res) => {
     updatedFields.passwordHash = await bcrypt.hash(password, constants.AUTH.SALT_ROUNDS);
   }
 
-  const updateProfileStrategy = {
+  const updateUserProfileStrategy = {
     storeType: constants.STORE.TYPES.MONGO_DB,
     operation: {
       type: constants.STORE.OPERATIONS.UPDATE,
@@ -83,7 +82,7 @@ const updateUserProfile = async (req, res) => {
     tableName: constants.STORE.TABLE_NAMES.USER,
   };
 
-  const result = await DatabaseService.execute(updateProfileStrategy);
+  const result = await DatabaseService.execute(updateUserProfileStrategy);
 
   if (result.nModified === 1) {
     return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json({ user: updatedFields });
@@ -105,14 +104,17 @@ const suspendUser = async (req, res) => {
     storeType: constants.STORE.TYPES.MONGO_DB,
     operation: {
       type: constants.STORE.OPERATIONS.UPDATE,
-      data: [{ _id: mongojs.ObjectId(userId) }, { isSuspended: true }],
+      data: [{ _id: mongojs.ObjectId(userId) }, { isSuspended: true, dateLastModified: new Date(), }],
     },
     tableName: constants.STORE.TABLE_NAMES.USER,
   };
 
   const result = await DatabaseService.execute(removeUserStrategy);
 
-  return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json(result);
+  if (result.nModified === 1) {
+    return res.sendStatus(constants.SYSTEM.HTTP_STATUS_CODES.NO_CONTENT);
+  }
+  return res.status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND).send(constants.AUTH.ERROR_MSG.USER_NOT_FOUND);
 };
 
 module.exports = exports = {

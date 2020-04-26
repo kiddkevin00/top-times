@@ -1,6 +1,6 @@
 @import '../_modules/variables';
 
-%create-update-account {
+%create-update-account-timezone {
   display: flex;
   flex-direction: column;
 
@@ -35,7 +35,6 @@
       margin-top: 32px;
       width: 100%;
 
-      // TODO: Abstract...
       .inputs {
         width: 100%;
         display: flex;
@@ -58,13 +57,14 @@
             color: #1C1E21;
           }
 
-          input {
+          > input,
+          > .additional-input-container > input {
             margin-top: 4px;
             border: 1px #CCD0D5 solid;
             border-radius: 4px;
             padding: 0 12px;
             width: 366px;
-            height: 39px;
+            height: $input-height;
             font-size: 13px;
             color: #1C1E21;
 
@@ -178,7 +178,7 @@
   }
 }
 
-@mixin time-user-management($controlPaneMoveUpWidth) {
+@mixin time-user-management($controlPaneMoveUpWidth, $extraInfoWordBreak: normal) {
   display: flex;
   width: 100%;
   min-height: 100%;
@@ -297,6 +297,8 @@
 
     .extra-info {
       flex: 0.5 0 0;
+      word-break: $extraInfoWordBreak;
+      hyphens: auto;
 
       @media only screen and (max-width: $controlPaneMoveUpWidth) {
         margin-left: 10px;

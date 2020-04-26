@@ -1,5 +1,6 @@
 @import './_modules/fonts';
 @import './_modules/normalize';
+@import './_modules/variables';
 
 * {
   font-family: 'SF Text';
@@ -63,12 +64,19 @@ input:disabled {
     background-color: white;
     margin: 4px 2px 0;
     border: 1px #CCD0D5 solid;
-    height: 39px;
+    height: $input-height;
     font-size: 13px;
   }
 }
 
-.role-select {
+.custom-ant-select {
   margin-top: 4px;
   color: #1C1E21;
+  font-size: 13px;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 1px $tint-color solid;
+  color: $tint-color;
 }

@@ -44,7 +44,7 @@ describe('HTTP Client', () => {
       await httpClient.get('/some/endpoint');
     } catch (err) {
       expect(err).toMatchObject({
-        message: 'Something went wrong...',
+        message: {},
         code: 'UNKNOWN_ERROR',
       });
     }

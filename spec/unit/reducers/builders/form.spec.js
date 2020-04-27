@@ -42,6 +42,7 @@ describe('Builder for form reducer', () => {
       field1: {
         ...initialState.field1,
         value,
+        dirty: true,
       },
     });
   });

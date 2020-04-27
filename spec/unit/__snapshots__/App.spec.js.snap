@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes element matches snapshot 1`] = `
+<BrowserRouter>
+  <div>
+    <Connect(withRouter(UnconnectedPageHeader)) />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/home"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/login"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/create-account"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/forgot-password"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/manage-timezones"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/manage-timezones/:userId"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/manage-users"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/manage-timezone"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/account-info"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/account-info/:id"
+      />
+      <Redirect
+        from="/"
+        push={false}
+        to="/home"
+      />
+    </Switch>
+  </div>
+</BrowserRouter>
+`;

@@ -77,7 +77,9 @@ const getTimeZone = async (req, res) => {
   const results = await DatabaseService.execute(getTimeZoneInfoStrategy);
 
   if (timeZoneId && results.length !== 1) {
-    return res.status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND).send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
+    return res
+      .status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND)
+      .send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
   }
   return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json(results);
 };
@@ -113,7 +115,10 @@ const updateTimeZone = async (req, res) => {
     storeType: constants.STORE.TYPES.MONGO_DB,
     operation: {
       type: constants.STORE.OPERATIONS.UPDATE,
-      data: [{ _id: mongojs.ObjectId(timeZoneId), userId: mongojs.ObjectId(userId || myUserId) }, updatedFields],
+      data: [
+        { _id: mongojs.ObjectId(timeZoneId), userId: mongojs.ObjectId(userId || myUserId) },
+        updatedFields,
+      ],
     },
     tableName: constants.STORE.TABLE_NAMES.TIME_ZONE,
   };
@@ -123,7 +128,9 @@ const updateTimeZone = async (req, res) => {
   if (result.nModified === 1) {
     return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json({ user: updatedFields });
   }
-  return res.status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND).send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
+  return res
+    .status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND)
+    .send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
 };
 
 const removeTimeZone = async (req, res) => {
@@ -150,7 +157,9 @@ const removeTimeZone = async (req, res) => {
   if (result.n === 1) {
     return res.sendStatus(constants.SYSTEM.HTTP_STATUS_CODES.NO_CONTENT);
   }
-  return res.status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND).send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
+  return res
+    .status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND)
+    .send(constants.AUTH.ERROR_MSG.TIMEZONE_NOT_FOUND);
 };
 
 module.exports = exports = {

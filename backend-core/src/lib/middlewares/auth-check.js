@@ -9,7 +9,10 @@ function authCheckMiddleware(req, res, next) {
   const jwtToken = req.headers.authorization; // req.cookies.jwt;
 
   try {
-    const decodedJwt = jwt.verify(jwtToken, jwtSecret, { issuer: jwtIssuer, audience: jwtAudience });
+    const decodedJwt = jwt.verify(jwtToken, jwtSecret, {
+      issuer: jwtIssuer,
+      audience: jwtAudience,
+    });
 
     delete decodedJwt.iat;
     delete decodedJwt.nbf;

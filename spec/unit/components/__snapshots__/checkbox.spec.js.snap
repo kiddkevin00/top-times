@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Input component when first mounts should be rendered correctly 1`] = `
+<div
+  className="pn-checkbox test-class"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex="-1"
+>
+  <div
+    className="checked-mark-container"
+  />
+  <p>
+    This checkbox is for testing
+  </p>
+</div>
+`;

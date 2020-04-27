@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component when children is a string should be rendered correctly 1`] = `
+<button
+  className="pn-button test-class"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  click me
+</button>
+`;
+
+exports[`Button component when children is not a string should be rendered correctly 1`] = `
+<button
+  className="pn-button test-class"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <span>
+    click me
+  </span>
+</button>
+`;

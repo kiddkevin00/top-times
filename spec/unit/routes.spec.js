@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 describe('Routes element', () => {
-  it('matches snapshot', () => {
+  it('should be rendered correctly', () => {
     const wrapper = shallow(routes);
 
     expect(toJson(wrapper)).toMatchSnapshot();

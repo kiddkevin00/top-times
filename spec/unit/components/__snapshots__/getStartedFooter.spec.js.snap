@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get Started Footer component should be rendered correctly 1`] = `
+<section
+  className="get-started-footer"
+>
+  <div>
+    <H2
+      className="get-started-h2"
+    >
+      You don't have to wrestle with timezones every single time anymore
+    </H2>
+    <Button
+      className="get-started-btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      LETS GET STARTED
+    </Button>
+  </div>
+</section>
+`;

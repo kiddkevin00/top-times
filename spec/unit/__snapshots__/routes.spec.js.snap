@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Routes element matches snapshot 1`] = `
+exports[`Routes element should be rendered correctly 1`] = `
 <BrowserRouter>
   <div>
     <Connect(withRouter(UnconnectedPageHeader)) />

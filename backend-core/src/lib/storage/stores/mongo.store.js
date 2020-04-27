@@ -19,11 +19,11 @@ class MongoStore extends BaseStore {
     if (isReplacing) {
       return connection.client
         .collection(collectionName)
-        .findAndModifyAsync({ query, update: { newFieldValueMap }, new: true }); // Not support bulk update at the same time.
-    } else if (Object.keys(newFieldValueMap).some(operator => !/\$[a-z]*/.test(operator))) {
-      operation = { $set: newFieldValueMap };
-    } else {
+        .findAndModifyAsync({ query, update: { newFieldValueMap }, new: true }); // Not supporting bulk update at once.
+    } else if (Object.keys(newFieldValueMap).some(operator => /\$[a-z]*/.test(operator))) {
       operation = newFieldValueMap;
+    } else {
+      operation = { $set: newFieldValueMap };
     }
     return connection.client
       .collection(collectionName)

@@ -21,7 +21,7 @@ describe('HTTP Client', () => {
     nock.cleanAll();
   });
 
-  it('creates an axios instance with given configuration', () => {
+  it('creates an axios instance with the given configuration', () => {
     const config = { some: 'configuration' };
     const httpClient = HttpClient.createInstance(config);
 
@@ -29,22 +29,21 @@ describe('HTTP Client', () => {
   });
 
   it('able to handle failing response with no response body', async () => {
-    const config = {};
+    const errorMsg = 'Something went wrong...';
     const httpClient = HttpClient.createInstance({
-      ...config,
       baseURL,
     });
 
     scope
       .get('/api/v0/some/endpoint')
       .once()
-      .reply(500, 'Something went wrong...');
+      .reply(500, errorMsg);
 
     try {
       await httpClient.get('/some/endpoint');
     } catch (err) {
       expect(err).toMatchObject({
-        message: {},
+        message: errorMsg,
         code: 'UNKNOWN_ERROR',
       });
     }

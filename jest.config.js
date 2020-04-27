@@ -1,13 +1,13 @@
 module.exports = {
-  setupTestFrameworkScriptFile: '<rootDir>/spec/support/enzyme.config.js',
+  setupTestFrameworkScriptFile: '<rootDir>/spec/support/jest.setup.js',
   verbose: true,
   testMatch: ['<rootDir>/spec/unit/**/*.spec.js'],
   coverageThreshold: {
     global: {
-      statements: 100,
-      branches: 100,
-      functions: 100,
-      lines: 100,
+      statements: 32,
+      branches: 15,
+      functions: 22,
+      lines: 32,
     },
   },
   collectCoverageFrom: [
@@ -40,4 +40,5 @@ module.exports = {
       },
     ],
   ],
+  restoreMocks: true,
 };

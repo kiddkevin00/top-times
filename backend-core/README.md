@@ -65,7 +65,7 @@ $ npm run unit-test
 
 * [Express.js](http://expressjs.com/)
 * [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
-* [Mongojs](https://github.com/mafintosh/mongojs)
+* [mongojs](https://github.com/mafintosh/mongojs)
 * [Sequelize](http://docs.sequelizejs.com/en/latest/)
 
 ***[Note] All required packages and versions are listed in `package.json`***

@@ -89,7 +89,7 @@ describe('Mongo store', function() {
     expect(removeAsync).to.have.been.calledWith(mockDoc);
   });
 
-  it('implements configuring index functionality :: configIndex() - [TODO]', function() {
+  it('implements configuring index functionality :: configIndex()', function() {
     expect(MongoStore)
       .to.have.property('configIndex')
       .that.is.an('function');

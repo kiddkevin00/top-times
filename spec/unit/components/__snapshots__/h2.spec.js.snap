@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 2 component should be rendered correctly 1`] = `
+<h2
+  className="pn-h2 test-class"
+>
+  This is a header 2
+</h2>
+`;

@@ -6,7 +6,7 @@ import {
 import uuid from 'uuid';
 
 describe('Utility helper class', () => {
-  it('should generate a unique id ::generateUniqueId()', () => {
+  it('should generate a unique id :: generateUniqueId()', () => {
     const { v4 } = uuid;
 
     uuid.v4 = jest.fn();
@@ -18,7 +18,7 @@ describe('Utility helper class', () => {
     uuid.v4 = v4;
   });
 
-  it('should set the location ::redirectTo()', () => {
+  it('should set the location :: redirectTo()', () => {
     const assign = jest.fn();
 
     window.location.assign = assign;

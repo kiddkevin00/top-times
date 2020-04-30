@@ -20,24 +20,44 @@ describe('Precondition validator', function() {
     }).to.throw();
   });
 
-  it('can validate if a value belongs to one of the provided options :: shouldBeEnumType()', () => {
-    value = 'option2';
+  context('can validate if a value belongs to one of the provided options :: shouldBeEnumType()', () => {
+    it('should pass the validation', () => {
+      value = 'option2';
 
-    expect(() => {
-      PreconditionValidator.shouldBeEnumType(value, [value]);
-    }).to.not.throw();
+      expect(() => {
+        PreconditionValidator.shouldBeEnumType(value, [value]);
+      }).to.not.throw();
+    });
+
+    it('should fail the validation', () => {
+      value = 'option2';
+
+      expect(() => {
+        PreconditionValidator.shouldBeEnumType(value, []);
+      }).to.throw();
+    });
   });
 
-  it('can validate if a value is a valid time :: shouldBeValidTime()', () => {
-    value = new Date().toISOString();
+  context('can validate if a value is a valid time :: shouldBeValidDateString()', () => {
+    it('should pass the validation', () => {
+      value = new Date().toISOString();
 
-    expect(() => {
-      PreconditionValidator.shouldBeValidDateString(value);
-    }).to.not.throw();
+      expect(() => {
+        PreconditionValidator.shouldBeValidDateString(value);
+      }).to.not.throw();
+    });
+
+    it('should fail the validation', () => {
+      value = 'an invalid date';
+
+      expect(() => {
+        PreconditionValidator.shouldBeValidDateString(value);
+      }).to.throw();
+    });
   });
 
   context('can validate if a value is an array :: shouldBeArrayOrArrayText()', () => {
-    it('after parsing', () => {
+    it('should pass the validation for array', () => {
       value = [4, 5, 6];
 
       expect(() => {
@@ -45,12 +65,64 @@ describe('Precondition validator', function() {
       }).to.not.throw();
     });
 
-    it('before parsing', () => {
+    it('should pass the validation for array text', () => {
       value = JSON.stringify([7, 8, 9]);
 
       expect(() => {
         PreconditionValidator.shouldBeArrayOrArrayText(value);
       }).to.not.throw();
+    });
+
+    it('should fail the validation for non parsable value', () => {
+      value = 'something cant parsed';
+
+      expect(() => {
+        PreconditionValidator.shouldBeArrayOrArrayText(value);
+      }).to.throw();
+    });
+
+    it('should fail the validation for non parsable value but not an array after parsing', () => {
+      value = '{}';
+
+      expect(() => {
+        PreconditionValidator.shouldBeArrayOrArrayText(value);
+      }).to.throw();
+    });
+  });
+
+  context('can validate if a value is a valid email :: shouldBeValidEmail()', () => {
+    it('should pass the validation', () => {
+      value = 'user@test.com';
+
+      expect(() => {
+        PreconditionValidator.shouldBeValidEmail(value, [value]);
+      }).to.not.throw();
+    });
+
+    it('should fail the validation', () => {
+      value = 'a@t.t';
+
+      expect(() => {
+        PreconditionValidator.shouldBeValidEmail(value, []);
+      }).to.throw();
+    });
+  });
+
+  context('can validate if a value is not lengthy :: shouldNotBeLengthy()', () => {
+    it('should pass the validation', () => {
+      value = 'not lengthy texts';
+
+      expect(() => {
+        PreconditionValidator.shouldNotBeLengthy(value);
+      }).to.not.throw();
+    });
+
+    it('should fail the validation', () => {
+      value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure';
+
+      expect(() => {
+        PreconditionValidator.shouldNotBeLengthy(value, []);
+      }).to.throw();
     });
   });
 });

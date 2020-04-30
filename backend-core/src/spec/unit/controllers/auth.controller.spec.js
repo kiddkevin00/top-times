@@ -1,17 +1,29 @@
 const AuthController = require('../../../lib/controllers/auth.controller');
 const DatabaseSvc = require('../../../lib/services/database.service');
+const bcrypt = require('bcrypt');
 
 describe('Auth controller', function () {
   let req;
   let res;
+  let next;
   let stubFuncs;
 
   beforeEach(function () {
-    res = {};
-    res.status = stub().returnsThis;
-    res.json = stub().returnsThis;
+    req = {
+      get: stub(),
+    };
 
-    req = {};
+    res = {
+      status: stub().returnsThis,
+      json: stub(),
+      send: stub(),
+      sendStatus: stub(),
+      cookie: stub(),
+      clearCookie: stub(),
+    };
+
+    next = stub();
+
     stubFuncs = [];
   });
 
@@ -21,68 +33,109 @@ describe('Auth controller', function () {
     }
   });
 
-  // [TODO]
-  context('can handle subscribe request :: subscribe()', function () {
-
-  });
-
-  // [TODO]
   context('can handle signup request :: signup()', function () {
+    it('on success', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.resolve([])));
 
+      req.body = {
+        fullName: 'Jon Joe',
+        timeZone: 'GMT',
+        role: 'Admin',
+        dob: '1992-01-02',
+        termsAccepted: true,
+        newsletterSubscribed: true,
+        password: 'P@ssw0rd123',
+        email: 'test@user.com',
+      };
+
+      await AuthController.signup(req, res, next);
+
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.not.have.been.called;
+    });
+
+    it('on failure', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.reject()));
+
+      req.body = {
+        fullName: 'Jon Joe',
+        timeZone: 'GMT',
+        role: 'Admin',
+        dob: '1992-01-02',
+        termsAccepted: true,
+        newsletterSubscribed: true,
+        password: 'P@ssw0rd123',
+        email: 'test@user.com',
+      };
+
+      await AuthController.signup(req, res, next);
+
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.have.been.called;
+    });
   });
 
   context('can handle login request :: login()', function () {
+    it('on success', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.resolve([{}])));
 
-    it('on success', function () {
-      stubFuncs.push(stub(AuthController, '_handleRequest', () => Promise.resolve()));
+      stub(bcrypt, 'compare', () => true);
 
       req.body = {
-        email: 'foo@bar.com',
+        identifier: 'foo@bar.com',
         password: 'foobar-secret',
       };
 
-      const promise = AuthController.login(req, res);
+      await AuthController.login(req, res,);
 
-      expect(AuthController._handleRequest).to.have.been.calledWith(match.object, res);
-      return expect(promise).to.eventually.deep.equal(res);
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.not.have.been.called;
     });
 
-    it('on failure', function () {
-      stubFuncs.push(stub(AuthController, '_handleRequest', () => Promise.reject(new Error())));
+    it('on failure', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.reject()));
 
       req.body = {
-        email: 'foo@bar.com',
+        identifier: 'foo@bar.com',
         password: 'foobar-secret',
       };
 
-      const promise = AuthController.login(req, res);
+      await AuthController.login(req, res, next);
 
-      expect(AuthController._handleRequest).to.have.been.calledWith(match.object, res);
-      return expect(promise).to.eventually.deep.equal(res);
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.have.been.called;
     });
-
   });
 
-  context('can handle general request :: _handleRequest()', function () {
+  context('can handle logout request :: logout()', function () {
+    it('on success', async () => {
+      await AuthController.logout(req, res, next);
 
-    beforeEach(function () {
-      stubFuncs.push(stub(DatabaseSvc, 'execute'));
+      expect(next).to.not.have.been.called;
     });
-
-    it('on success', function () {
-      const result = {};
-      const expectedResult = JSON.parse(JSON.stringify(result));
-      const state = {};
-      const strategy = {};
-
-      DatabaseSvc.execute.returns(Promise.resolve(result));
-
-      const promise = AuthController._handleRequest(state, res, DatabaseSvc, strategy);
-
-      expect(DatabaseSvc.execute).to.have.been.calledWith(strategy);
-      return expect(promise).to.eventually.deep.equal(expectedResult);
-    });
-
   });
 
+  context('can handle request to get my profile :: getMyProfile()', function () {
+    it('on success', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.resolve([{}])));
+
+      req.user = {};
+
+      await AuthController.getMyProfile(req, res, next);
+
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.not.have.been.called;
+    });
+
+    it('on failure', async () => {
+      stubFuncs.push(stub(DatabaseSvc, 'execute', () => Promise.reject()));
+
+      req.user = {};
+
+      await AuthController.getMyProfile(req, res, next);
+
+      expect(DatabaseSvc.execute).to.have.been.calledWith(match.object);
+      expect(next).to.have.been.called;
+    });
+  });
 });

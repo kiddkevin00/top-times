@@ -57,7 +57,8 @@ $ npm run lint
 ### Unit test
 
 ```
-$ npm run unit-test
+$ npm run test  # Run all the tests and show the leanest version of the test report
+$ npm run coverage:test && npm run coverage:report  # Run all the tests and show the test coverage report
 ```
 
 

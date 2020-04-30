@@ -7,26 +7,22 @@
     "------------- EXPOSED -------------": "",
     "start": "NODE_ENV=production node --stack-size=65500 src/lib/app.js",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' --ext .js src/ examples/ bin/",
-    "unit-test": "cat src/spec/support/run_all_the_tests.txt; npm run mocha-unit-test",
-    "integration-test": "",
-    "precommit": "npm run lint && npm run coverage:unit-test",
+    "test": "cat src/spec/support/run_all_the_tests.txt; multi='tap=- xunit=spec/reports/xunit.xml' npm run mocha -- --reporter mocha-multi | faucet",
+    "coverage:test": "nyc --require babel-register --check-coverage --all --preload-sources --reporter cobertura --reporter html npm run mocha",
+    "coverage:report": "nyc report",
+    "precommit": "npm run lint && npm run coverage:test",
     "prepush": "npm run branch-check && npm run precommit && npm run coverage:update-thresholds",
     "version:bump": "npm run version:instruction && ./bin/version-bump.js",
     "------------- INTERNAL ------------": "",
-    "mocha": "mocha --compilers js:babel-register --opts mocha.opts",
-    "mocha-unit-test": "multi='tap=- xunit=spec/reports/xunit.xml' npm run mocha -- --reporter mocha-multi | faucet",
-    "coverage:unit-test": "nyc --require babel-register --check-coverage --all --preload-sources --reporter cobertura --reporter html npm run mocha",
-    "coverage:integration-test": "",
+    "mocha": "NODE_ENV=test mocha --compilers js:babel-register --opts mocha.opts",
     "coverage:update-thresholds": "./bin/update-test-coverage.js",
     "branch-check": "./bin/restrict-branches-to-push.sh",
     "version:instruction": "echo 'Please specify full version number after `npm run version:bump`.  E.g. $ npm run version:bump 0.0.1'",
     "------------- LOCAL DEV -----------": "",
-    "local-unit-test": "npm run mocha -- --bail",
-    "local-integration-test": "",
-    "coverage:report": "nyc report",
-    "coverage:html-report": "open spec/coverage/index.html",
+    "local-test": "npm run mocha -- --bail",
     "dev:start": "nodemon --watch src/",
-    "dev:watch": "watch 'npm run local-unit-test' src/",
+    "dev:watch": "watch 'npm run local-test' src/",
+    "coverage:html-report": "open spec/coverage/index.html",
     "dev:performance": "nodemon --perf_basic_prof --debug --trace_gc",
     "debug": "node --debug --debug-brk src/lib/app.js"
   },
@@ -60,12 +56,16 @@
     }
   },
   "nyc": {
-    "statements": 53.14,
-    "branches": 14.4,
-    "functions": 27.45,
-    "lines": 53.72,
-    "excludes": [
-      "**/*.spec.js"
+    "statements": 98.8,
+    "branches": 87.91,
+    "functions": 100,
+    "lines": 98.7,
+    "exclude": [
+      "**/*.spec.js",
+      "src/lib/servers/",
+      "src/lib/app.js",
+      "src/lib/cluster-app.js",
+      "src/lib/routes/index.js"
     ],
     "include": [
       "src/lib/**"

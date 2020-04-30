@@ -1,4 +1,4 @@
-const Controller = require('../../controllers/timeZones.controller');
+const Controller = require('../../controllers/time-zones.controller');
 const authCheckMiddleware = require('../../middlewares/auth-check');
 const { Router } = require('express');
 

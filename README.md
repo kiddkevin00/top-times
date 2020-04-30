@@ -15,13 +15,13 @@ To house a react/redux application for end user experience.
 
 ## Contributing
 ### Unit Tests
-  * `$ npm run test`
+  * Run all the tests and show the test coverage report: `$ npm run test`
   * Use [Jest](https://facebook.github.io/jest/) and [Enzyme](https://github.com/airbnb/enzyme/blob/master/docs/guides/jest.md) for the unit testing framework
   * There is a strict coverage rule in this repository provided by [Jest](https://facebook.github.io/jest/)
   * All commits are subject to pass all the coverage thresholds, including Jest snapshot comparison testing
 
 ### Linting
-  * `$ npm run lint`
+  * Run the latest coding standard check: `$ npm run lint`
   * Javascript is subject to [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) eslint rules and [prettier](https://prettier.io/) formatting rules
   * SCSS is subject to [stylelint](https://github.com/stylelint/stylelint) rules
 

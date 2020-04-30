@@ -20,5 +20,6 @@
     "chai-expect/no-inner-compare": 2,
     "chai-expect/terminating-properties": 2,
     "func-names": 0,
+    "no-unused-expressions": 1
   }
 }

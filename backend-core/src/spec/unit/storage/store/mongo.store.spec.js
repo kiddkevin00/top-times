@@ -67,15 +67,26 @@ describe('Mongo store', function() {
     expect(findAsync).to.have.been.calledWith(mockDoc);
   });
 
-  it('implements update functionality :: update()', function() {
-    expect(MongoStore)
-      .to.have.property('update')
-      .that.is.an('function');
+  context('implements update functionality :: update()', function() {
+    it('can perform partial update', () => {
+      expect(MongoStore)
+        .to.have.property('update')
+        .that.is.an('function');
 
-    MongoStore.update(conn, collectionName, mockDoc, mockDoc2);
+      MongoStore.update(conn, collectionName, mockDoc, mockDoc2);
 
-    expect(conn.client.collection).to.have.been.calledWith(collectionName);
-    expect(updateAsync).to.have.been.calledWith(mockDoc, { $set: mockDoc2 });
+      expect(conn.client.collection).to.have.been.calledWith(collectionName);
+      expect(updateAsync).to.have.been.calledWith(mockDoc, { $set: mockDoc2 });
+    });
+
+    it('can use operator to perform advanced update', () => {
+      const mockDateWithOperator = { $set: mockDoc2 };
+
+      MongoStore.update(conn, collectionName, mockDoc, mockDateWithOperator);
+
+      expect(conn.client.collection).to.have.been.calledWith(collectionName);
+      expect(updateAsync).to.have.been.calledWith(mockDoc, mockDateWithOperator);
+    });
   });
 
   it('implements delete functionality :: delete()', function() {

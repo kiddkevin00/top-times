@@ -1,6 +1,6 @@
 {
   "name": "top-times-web-core",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Core web application for time zone management",
   "main": "./lib/server/",
   "scripts": {

@@ -77,15 +77,16 @@ describe('Me action creator', () => {
 
     describe('when checking authentication', () => {
       let userData;
-      let jwtToken;
       const loadDataRequestAction = { type: LOAD_DATA.REQUEST, name };
 
       beforeEach(() => {
         userData = { email: 'marcus123@gmail.com', fullName: 'Marcus Test'};
-        jwtToken = 'a-jwt-token';
+
       });
 
       it('should dispatch three actions on successful load', async () => {
+        const jwtToken = 'a-jwt-token';
+
         checkAuthentication.mockResolvedValue({ data: { user: userData, jwtToken } });
 
         const user = await store.dispatch(actionCreator.checkAuthentication());

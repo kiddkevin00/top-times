@@ -4,10 +4,10 @@ module.exports = {
   testMatch: ['<rootDir>/spec/unit/**/*.spec.js'],
   coverageThreshold: {
     global: {
-      statements: 32,
+      statements: 39,
       branches: 15,
-      functions: 22,
-      lines: 32,
+      functions: 27,
+      lines: 39,
     },
   },
   collectCoverageFrom: [

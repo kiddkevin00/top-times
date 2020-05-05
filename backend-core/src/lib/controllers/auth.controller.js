@@ -170,7 +170,7 @@ const getMyProfile = async (req, res) => {
     storeType: constants.STORE.TYPES.MONGO_DB,
     operation: {
       type: constants.STORE.OPERATIONS.SELECT,
-      data: [{ _id: mongojs.ObjectId(_id) }],
+      data: [{ _id: mongojs.ObjectId(_id), isSuspended: false }],
     },
     tableName: constants.STORE.TABLE_NAMES.USER,
   };

@@ -126,7 +126,7 @@ const updateTimeZone = async (req, res) => {
   const result = await DatabaseService.execute(updateTimeZoneInfoStrategy);
 
   if (result.nModified === 1) {
-    return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json({ user: updatedFields });
+    return res.status(constants.SYSTEM.HTTP_STATUS_CODES.OK).json({ timeZone: updatedFields });
   }
   return res
     .status(constants.SYSTEM.HTTP_STATUS_CODES.NOT_FOUND)
@@ -142,6 +142,8 @@ const removeTimeZone = async (req, res) => {
       .status(constants.SYSTEM.HTTP_STATUS_CODES.FORBIDDEN)
       .send(constants.AUTH.ERROR_MSG.PERMISSION_DENIED);
   }
+
+  Validator.shouldNotBeEmpty(timeZoneId, 'timeZoneId');
 
   const removeTimeZoneStrategy = {
     storeType: constants.STORE.TYPES.MONGO_DB,
